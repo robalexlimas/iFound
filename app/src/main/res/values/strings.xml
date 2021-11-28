@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">iFound</string>
+    <string name="login_logo_description">Logo</string>
+    <string name="login_user_text_hint">Usuario</string>
+    <string name="login_password_text_hitn">Contraseña</string>
+    <string name="login_btn_login">Ingresar</string>
+    <string name="login_btn_sign">Registrarse</string>
+</resources>

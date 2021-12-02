@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 public class form_sign extends AppCompatActivity {
 
@@ -27,12 +28,34 @@ public class form_sign extends AppCompatActivity {
                 goLogin(v);
             }
         });
+
+        Button btnCreate = (Button) findViewById(R.id.btnSignCreate);
+        btnCreate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EditText user = (EditText) findViewById(R.id.textUserSign);
+                EditText password = (EditText) findViewById(R.id.textPasswordSign);
+                if (!user.getText().toString().isEmpty() && !password.getText().toString().isEmpty()) {
+                    showConfirm(v.getContext(), "Crear cuenta");
+                } else {
+                    showMessage(v.getContext(), "Error", "Debe ingresar la información solicitada");
+                }
+            }
+        });
     }
 
     @Override
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return super.onSupportNavigateUp();
+    }
+
+    private void showMessage(Context context, String title, String message) {
+        AlertDialog.Builder modal = new AlertDialog.Builder(context);
+        modal.setTitle(title);
+        modal.setMessage(message);
+        modal.create();
+        modal.show();
     }
 
     private void goLogin(View v) {
@@ -51,9 +74,7 @@ public class form_sign extends AppCompatActivity {
         });
         modal.setNegativeButton(R.string.modal_cancel, new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialog, int which) {
-                // Cancel
-            }
+            public void onClick(DialogInterface dialog, int which) { }
         });
         modal.setMessage(message);
         modal.create();

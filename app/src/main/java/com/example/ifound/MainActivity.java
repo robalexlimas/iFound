@@ -3,6 +3,7 @@ package com.example.ifound;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -18,12 +19,24 @@ public class MainActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder message = new AlertDialog.Builder(v.getContext());
-                message.setTitle("Error");
-                message.setMessage("Registrese");
-                message.create();
-                message.show();
+                showMessage(v.getContext(), "Error", "Error in login");
             }
         });
+
+        Button btnSign = (Button) findViewById(R.id.btnSign);
+        btnSign.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showMessage(v.getContext(), "Error", "Error register");
+            }
+        });
+    }
+
+    private void showMessage(Context context, String title, String message) {
+        AlertDialog.Builder modal = new AlertDialog.Builder(context);
+        modal.setTitle(title);
+        modal.setMessage(message);
+        modal.create();
+        modal.show();
     }
 }

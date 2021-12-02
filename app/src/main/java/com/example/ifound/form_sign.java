@@ -1,8 +1,11 @@
 package com.example.ifound;
 
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -35,5 +38,25 @@ public class form_sign extends AppCompatActivity {
     private void goLogin(View v) {
         Intent login = new Intent(this, MainActivity.class);
         startActivity(login);
+    }
+
+    private void showConfirm(Context context, String message) {
+        AlertDialog.Builder modal = new AlertDialog.Builder(context);
+        modal.setCancelable(true);
+        modal.setPositiveButton(R.string.modal_confirm, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // Confirm
+            }
+        });
+        modal.setNegativeButton(R.string.modal_cancel, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // Cancel
+            }
+        });
+        modal.setMessage(message);
+        modal.create();
+        modal.show();
     }
 }

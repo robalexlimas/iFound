@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,7 +22,13 @@ public class MainActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showConfirm(v.getContext(), "Seguro desea enviar la información?");
+                EditText user = (EditText) findViewById(R.id.textUser);
+                EditText password = (EditText) findViewById(R.id.textPassword);
+                if (!user.getText().toString().isEmpty() && !password.getText().toString().isEmpty()) {
+                    showMessage(v.getContext(), user.getText().toString(), password.getText().toString());
+                } else {
+                    showMessage(v.getContext(), "Error", "Ingrese los datos solicitados");
+                }
             }
         });
 
@@ -42,26 +49,6 @@ public class MainActivity extends AppCompatActivity {
     private void showMessage(Context context, String title, String message) {
         AlertDialog.Builder modal = new AlertDialog.Builder(context);
         modal.setTitle(title);
-        modal.setMessage(message);
-        modal.create();
-        modal.show();
-    }
-
-    private void showConfirm(Context context, String message) {
-        AlertDialog.Builder modal = new AlertDialog.Builder(context);
-        modal.setCancelable(true);
-        modal.setPositiveButton(R.string.modal_confirm, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                // Confirm
-            }
-        });
-        modal.setNegativeButton(R.string.modal_cancel, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                // Cancel
-            }
-        });
         modal.setMessage(message);
         modal.create();
         modal.show();

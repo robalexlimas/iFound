@@ -8,4 +8,5 @@
     <string name="sign_user_text_hint">Usuario</string>
     <string name="sign_password_text_hint">Contraseña</string>
     <string name="sign_btn_sign">Crear cuenta</string>
+    <string name="sign_btn_back">Regresar</string>
 </resources>

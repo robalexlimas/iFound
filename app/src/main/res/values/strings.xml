@@ -9,4 +9,6 @@
     <string name="sign_password_text_hint">Contraseña</string>
     <string name="sign_btn_sign">Crear cuenta</string>
     <string name="sign_btn_back">Regresar</string>
+    <string name="modal_confirm">Aceptar</string>
+    <string name="modal_cancel">Cancelar</string>
 </resources>

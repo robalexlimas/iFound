@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         btnSign.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showMessage(v.getContext(), "Error", "Error register");
+                setContentView(R.layout.activity_form_sign);
             }
         });
     }

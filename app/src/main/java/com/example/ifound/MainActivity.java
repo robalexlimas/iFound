@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -14,7 +15,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         Button btnLogin = (Button) findViewById(R.id.btnLogin);
         btnLogin.setOnClickListener(new View.OnClickListener() {
@@ -28,9 +28,14 @@ public class MainActivity extends AppCompatActivity {
         btnSign.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setContentView(R.layout.activity_form_sign);
+                goSign(v);
             }
         });
+    }
+
+    private void goSign(View v) {
+        Intent sign = new Intent(this, form_sign.class);
+        startActivity(sign);
     }
 
     private void showMessage(Context context, String title, String message) {
